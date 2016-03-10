@@ -44,7 +44,6 @@
     }
 </style>
 <script scoped>
-    console.log(this.title);
     this.selectedLearningObjectiveList = learningObjectivesList["No"+this.chapterID];
     this.toggle = function(event){
         var folder_icon = $(this.folder_icon);
