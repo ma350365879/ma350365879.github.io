@@ -32,7 +32,7 @@
                 <img src="pic/default_user_pic.png" />
             </div>
             <div id="user_profile_container">
-                <p id="profile_top">username | Logout</p>
+                <p id="profile_top">{username}&nbsp;|&nbsp;<a href=".." onclick = {logOut}>Logout</a></p>
                 <div id="learning_procedure">
                     <div id="mastered"></div>
                     <div id="learning"></div>
@@ -67,5 +67,15 @@
         this.learningObjectiveForTesting="Testing - XX";
         this.learningObjectiveForReview="Review - XX";
         this.learningObjectiveForHomework="Homework - XX";
+
+        var currentUser= Parse.User.current();
+        this.username = currentUser.get('first') + " " + currentUser.get('last');
+        this.update();
+
+        this.logOut = function(){ 
+            Parse.User.logOut();
+            window.location.replace("..");
+        };
+        
     </script>
 </student-main-page>

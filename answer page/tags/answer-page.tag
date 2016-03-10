@@ -36,7 +36,7 @@
         </div>
         <div id="right">
             <div>
-                <p id="profile_top">username | Logout</p>
+                <p id="profile_top">{username}&nbsp;|&nbsp;<a href=".." onclick = {logOut}>Logout</a></p>
             </div>
             <div id="mastery_confidence_level">
             </div>
@@ -405,6 +405,15 @@
 		        }
 		    });
 		};
+
+        var currentUser= Parse.User.current();
+        this.username = currentUser.get('first') + " " + currentUser.get('last');
+        this.update();
+
+        this.logOut = function(){ 
+            Parse.User.logOut();
+            window.location.replace("..");
+        };
 
     </script>
 </answer-page>
