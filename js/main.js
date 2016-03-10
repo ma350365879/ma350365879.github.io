@@ -69,7 +69,7 @@ $('#login').click(function(event) {
 		console.log(user);
 		updateLoginStatus();
 
-		window.location.href = '/index.html';
+		window.location.href = '/student%20page/';
 
 	}, function(error) {
 		console.log(error.message);
