@@ -36,6 +36,5 @@
 		}
     </style>
     <script type="text/javascript">
-		console.log(this.learningObjective);
     </script>
 </hightlighted-learning-objective>
