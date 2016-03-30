@@ -68,12 +68,21 @@
         this.learningObjectiveForReview="Review - XX";
         this.learningObjectiveForHomework="Homework - XX";
 
-        var currentUser= Parse.User.current();
-        this.username = currentUser.get('first') + " " + currentUser.get('last');
-        this.update();
+        try {
+            var currentUser= Parse.User.current();
+            this.username = currentUser.get('first') + " " + currentUser.get('last');
+            this.update();
+        } catch (e) {
+            this.username = "anonymous";
+            console.log("you are log in as an anonymous user.");
+        }
 
         this.logOut = function(){ 
-            Parse.User.logOut();
+            try {
+                Parse.User.logOut();
+            } catch (e) {
+                console.log("Anonymous User Logging Out.");
+            }
             window.location.replace("..");
         };
         
