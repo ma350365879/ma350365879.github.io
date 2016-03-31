@@ -7,20 +7,7 @@ Parse.Analytics.track('pageLoad', {
 	'page': 'objects'
 });
 
-var updateLoginStatus = function() {
-	var user = Parse.User.current();
-	var loginStatus = false;
-
-	if (user) {
-		loginStatus = true;
-	}
-
-	if (loginStatus) {
-		$('#status').html('Logged In: ' + user.get('username'));
-	} else {
-		$('#status').html('Logged Out');
-	}
-};
+var updateLoginStatus = function() {};
 
 // Our registration click listener and handler
 $('#registerBtn').click(function(event) {
@@ -76,10 +63,3 @@ $('#login').click(function(event) {
 		updateLoginStatus();
 	});
 });
-$('#logout').click(function(event) {
-	Parse.User.logOut();
-	updateLoginStatus();
-});
-
-
-updateLoginStatus();
