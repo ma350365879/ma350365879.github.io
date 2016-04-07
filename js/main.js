@@ -7,7 +7,6 @@ Parse.Analytics.track('pageLoad', {
 	'page': 'objects'
 });
 
-var updateLoginStatus = function() {};
 
 // Our registration click listener and handler
 $('#registerBtn').click(function(event) {
@@ -29,20 +28,17 @@ $('#registerBtn').click(function(event) {
 		email: email
 	};
 
-	console.log(userAttributes);
+	// console.log(userAttributes);
 
 	// Sign-up a User with Parse
 	Parse.User.signUp(username, password, userAttributes).then(function(user) {
 		console.log('Success: ', user);
-		updateLoginStatus();
-
 		console.log('one');
 
-		window.location.href = '/index.html';
+		window.location.href = '/student%20page/';
 
 	}, function(error) {
 		console.log('Error: ', error.message);
-		updateLoginStatus();
 	});
 
 	console.log('two');
@@ -54,12 +50,9 @@ $('#login').click(function(event) {
 
 	Parse.User.logIn(username, password).then(function(user) {
 		console.log(user);
-		updateLoginStatus();
-
 		window.location.href = '/student%20page/';
 
 	}, function(error) {
 		console.log(error.message);
-		updateLoginStatus();
 	});
 });

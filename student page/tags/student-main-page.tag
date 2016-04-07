@@ -64,24 +64,38 @@
         </div>
     </div>
     <script type="text/javascript">
+        // set up button on the right bottom, TODO: change later
         this.learningObjectiveForTesting="Testing - XX";
         this.learningObjectiveForReview="Review - XX";
         this.learningObjectiveForHomework="Homework - XX";
 
+        // function for click folder and toggle down learning objective list
+        $(".header").click(function () {
+            $header = $(this);
+            //getting the next element
+            $content = $header.next();
+            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            $content.slideToggle(500, function () {});
+
+        });
+
+        // Parse Query
+        Parse.initialize("3m77BurTydmWVyeCR1wOFRMU7JbTYt2s4VECxAQN", "6Jdeazgr93B23jsoeZafhPyCKexBzIqeKsXtdH7n");
+        
         try {
-            var currentUser= Parse.User.current();
+            currentUser= Parse.User.current();
             this.username = currentUser.get('first') + " " + currentUser.get('last');
             this.update();
         } catch (e) {
             this.username = "anonymous";
-            console.log("you are log in as an anonymous user.");
         }
 
+        // logout button
         this.logOut = function(){ 
             try {
                 Parse.User.logOut();
             } catch (e) {
-                console.log("Anonymous User Logging Out.");
+
             }
             window.location.replace("..");
         };
